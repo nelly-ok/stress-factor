@@ -1,18 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <app-navigator></app-navigator>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {
+  createAppContainer,
+  createStackNavigator,
+} from "vue-native-router";
+
+import HomeScreen from "./screens/Home.vue";
+
+const StackNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppNavigator = createAppContainer(StackNavigator);
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { AppNavigator },
 }
 </script>
 
