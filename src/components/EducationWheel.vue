@@ -76,4 +76,10 @@ export default {
 .bg {
   z-index: 3;
 }
+
+.home h1 {
+  position: relative;
+  top: -3em;
+}
+
 </style>

@@ -80,6 +80,6 @@ export default {
 }
 
 .stat-img {
-  width: 75%;
+  width: 55%;
 }
 </style>
