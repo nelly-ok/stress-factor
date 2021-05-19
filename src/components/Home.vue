@@ -5,28 +5,32 @@
       <div class="select-third">
         <h6>Gender:</h6>
         <select class="form-select" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option selected>Female</option>
+          <option value="1">Male</option>
+          <option value="2">Trans</option>
+          <option value="3">Non-binary</option>
+          <option value="4">Queer/Non-conforming</option>
+          <option value="5">Prefer not to answer</option>
         </select>
       </div>
       <div class="select-third">
         <h6>Age:</h6>
         <select class="form-select" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option selected>5-10</option>
+          <option value="1">10-18</option>
+          <option value="2">18-30</option>
+          <option value="3">30+</option>
+          <option value="4">Prefer not to answer</option>
         </select>
       </div>
       <div class="select-third">
         <h6>Sexual Orientation:</h6>
         <select class="form-select" aria-label="Default select example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option selected>Straight</option>
+          <option value="1">Gay/Lesbian</option>
+          <option value="2">Bi-sexual</option>
+          <option value="3">Queer</option>
+          <option value="4">Prefer not to answer</option>
         </select>
       </div>
     </div>
@@ -64,7 +68,7 @@ export default {
       padding: 4em;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   justify-content: space-around;
 }
 

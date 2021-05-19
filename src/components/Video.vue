@@ -1,23 +1,32 @@
 <template>
   <div class="home">
-    <h1></h1>
-    <img class="stat-img" src="../assets/img/Stat2.jpg" alt="" srcset="">
-    <NextButton  @prev="prev" @next="next"/>
+    <h1>{{header}}</h1>
+    <iframe
+      width="560"
+      height="315"
+      :src="source"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <NextButton @prev="prev" @next="next" />
   </div>
 </template>
 
 <script>
 
-
-import NextButton from './NextButton.vue';
+import NextButton from './NextButton'
 
 export default {
-  name: "Stat2",
+  
+  name: "Video",
   components: {
     NextButton
   },
   props: {
-    msg: String,
+    source: String,
+    header: String
   },
   methods: {
     start() {

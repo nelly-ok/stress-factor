@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>What is stress</h1>
+    <h1></h1>
     <img class="stat-img" src="../assets/img/Stat4.jpg" alt="" srcset="">
     <NextButton  @prev="prev" @next="next"/>
   </div>
