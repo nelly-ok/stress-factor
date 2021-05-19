@@ -1,26 +1,19 @@
 <template>
   <div class="home">
-    <h1>What is stress</h1>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/dERu8051t4w"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-    <NextButton @prev="prev" @next="next" />
+    <h1>Next lets explore race. America (like most other countriess) has a race problem. Don’t believe? I’ll let the numbers do the talking</h1>
+    <img class="stat-img" src="../assets/img/income.jpeg" alt="" srcset="">
+    <NextButton  @prev="prev" @next="next"/>
   </div>
 </template>
 
+
+
 <script>
 
-import NextButton from './NextButton'
+import NextButton from './NextButton.vue';
 
 export default {
-  
-  name: "Stress",
+  name: "Stat1",
   components: {
     NextButton
   },

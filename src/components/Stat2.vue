@@ -1,26 +1,18 @@
 <template>
   <div class="home">
     <h1>What is stress</h1>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/dERu8051t4w"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-    ></iframe>
-    <NextButton @prev="prev" @next="next" />
+    <img class="stat-img" src="../assets/img/Stat2.jpg" alt="" srcset="">
+    <NextButton  @prev="prev" @next="next"/>
   </div>
 </template>
 
 <script>
 
-import NextButton from './NextButton'
+
+import NextButton from './NextButton.vue';
 
 export default {
-  
-  name: "Stress",
+  name: "Stat2",
   components: {
     NextButton
   },

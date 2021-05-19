@@ -30,26 +30,28 @@
         </select>
       </div>
     </div>
-    <button type="button" class="btn btn-success" @click="start()" >Start</button>
+    <button type="button" class="btn btn-success" @click="start()">
+      Start
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
   props: {
-    msg: String
+    msg: String,
   },
   methods: {
-    start(){
-      this.$emit('start')
-    }
+    start() {
+      this.$emit("start");
+    },
   },
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
 .identity-select {
   display: flex;
   width: 100%;
@@ -59,6 +61,7 @@ export default {
 
 .home {
   display: flex;
+      padding: 4em;
   flex-direction: column;
   align-items: center;
   height: 100vh;
@@ -72,4 +75,7 @@ export default {
   align-items: center;
 }
 
+.stat-img {
+  width: 75%;
+}
 </style>
