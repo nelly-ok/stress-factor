@@ -30,7 +30,7 @@
         </select>
       </div>
     </div>
-    <button type="button" class="btn btn-success">Start</button>
+    <button type="button" class="btn btn-success" @click="start()" >Start</button>
   </div>
 </template>
 
@@ -39,7 +39,12 @@ export default {
   name: 'Home',
   props: {
     msg: String
-  }
+  },
+  methods: {
+    start(){
+      this.$emit('start')
+    }
+  },
 }
 </script>
 

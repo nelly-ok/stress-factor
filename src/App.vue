@@ -1,28 +1,33 @@
 <template>
-  <app-navigator></app-navigator>
+    <section>
+      <Home v-if="home" @start="start" msg="Welcome to Your Vue.js App"/>
+      <Stress v-if="stress" />
+    </section>
 </template>
 
 <script>
-import {
-  createAppContainer,
-  createStackNavigator,
-} from "vue-native-router";
-
-import HomeScreen from "./screens/Home.vue";
-
-const StackNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
-
-const AppNavigator = createAppContainer(StackNavigator);
+import Home from './components/Home.vue'
+import Stress from './components/Stress.vue'
 
 export default {
-  components: { AppNavigator },
+  name: 'App',
+  components: {
+    Home,
+    Stress
+  },
+  data() {
+    return {
+      home: true,
+      stress: false
+    }
+  },
+  methods: {
+    start(){
+      console.log("start")
+      this.home = false;
+      this.stress = true;
+    }
+  },
 }
 </script>
 
