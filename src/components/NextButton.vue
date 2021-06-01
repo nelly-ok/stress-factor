@@ -1,9 +1,9 @@
 <template>
     <div class="navigate">
-      <button type="button" class="btn btn-success" @click="prev()">
+      <button type="button" id="Left" class="btn btn-success" @click="prev()">
         &lt; &lt;
       </button>
-      <button type="button" class="btn btn-success" @click="next()">
+      <button type="button" id="Right" class="btn btn-success" @click="next()">
         &gt; &gt;
       </button>
     </div>
@@ -14,6 +14,12 @@ export default {
   name: "Stat1",
   props: {
     msg: String,
+    hideLeft: Boolean
+  },
+  mounted() {
+    if (this.hideLeft){
+      document.getElementById('Left').style.visibility = "hidden";
+    }
   },
   methods: {
     start() {
@@ -37,6 +43,7 @@ export default {
   display: flex;
   justify-content: space-between;
   position: absolute;
+  top: 50vh;
 }
 
 

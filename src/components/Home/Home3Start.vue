@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome to Stress Factor</h1>
+    <h1>Choose an Identity</h1>
     <div class="identity-select">
       <div class="select-third">
         <h6>Gender:</h6>
@@ -42,7 +42,7 @@
 
 <script>
 export default {
-  name: "Home",
+  name: "Home3Start",
   props: {
     msg: String,
   },
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style scoped>
 .identity-select {
   display: flex;
   width: 100%;

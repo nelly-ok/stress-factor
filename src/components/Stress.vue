@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>What is stress</h1>
+    <h3>What is stress</h3>
     <iframe
       width="560"
       height="315"

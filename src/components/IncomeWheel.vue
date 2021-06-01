@@ -46,6 +46,8 @@ export default {
         wheel.style.transform = "rotate(" + deg + "deg)";
       }, 100);
 
+
+
       //Stop the functions after 1 minute.
       setTimeout(function () {
         clearInterval(interval);
@@ -57,6 +59,36 @@ export default {
     next() {
       this.$emit("next");
     },
+    incomeRandom(){
+      let rand = Math.floor(Math.random() * 101)+1; //pick a random number between 1 and 100
+      if (rand <= 17) {
+        console.log("Under 15,000")
+      } 
+      else if (rand > 17 && rand <= 29) {
+        console.log("15,000 to 24,999")
+      } 
+      else if (rand > 29 && rand <= 40) {
+        console.log("25,000 to 34,999")
+      } 
+      else if (rand > 40 && rand <= 54) {
+        console.log("35,000 to 49,999")
+      } 
+      else if (rand > 54 && rand <= 71) {
+        console.log("50,000 to 74,999")
+      } 
+      else if (rand > 71 && rand <= 81) {
+        console.log("75,000 to 99,999")
+      } 
+      else if (rand > 81 && rand <= 92) {
+        console.log("100,000 to 149,999")
+      } 
+      else if (rand > 92 && rand <= 96) {
+        console.log("150,000 to 199,999")
+      } 
+      else if (rand > 96 && rand <= 101) {
+        console.log("200,000 and over")
+      }
+    }
   },
 };
 </script>

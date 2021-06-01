@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="header">
+    <div class="header" v-if="startedFlag">
       <div class="time" @click="openTimerNotif">
         <label id="minutes">00</label>:<label id="seconds">00</label> 
       </div>
@@ -26,7 +26,7 @@
           Stop fatal shooting notifications
         </button>
     </div>
-    <Home v-if="home" @start="start" msg="Welcome to Your Vue.js App" />
+    <Home v-if="home" @started="started" @start="start" msg="Welcome to Your Vue.js App" />
     <Stress v-if="comp[0]" @prev="prev(0)" @next="next(0)" />
     <Stat1 v-if="comp[1]" @prev="prev(1)" @next="next(1)" />
     <Stat2 v-if="comp[2]" @prev="prev(2)" @next="next(2)" />
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import Home from "./components/Home.vue";
+import Home from "./components/Home/Home.vue";
 import Stress from "./components/Stress.vue";
 import Stat1 from "./components/Stat1.vue";
 import Stat2 from "./components/Stat2.vue";
@@ -81,17 +81,13 @@ export default {
       totalSeconds: 0,
       timerPopup: false,
       fatal: true,
-      fatalDiv: false
+      fatalDiv: false,
+      startedFlag: false
     };
   },
   mounted() {
     //https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
-    this.minutesLabel = document.getElementById("minutes");
-    this.secondsLabel = document.getElementById("seconds");
-    setInterval(this.setTime, 1000);
-    setInterval(this.fatalShooting, 83220);
-    this.timerPopup = document.getElementById("TimerPopup");
-    this.fatalDiv = document.getElementById("FatalShootings")
+    
 
   },
   methods: {
@@ -99,6 +95,10 @@ export default {
       console.log("start");
       this.home = false;
       this.comp[0] = true;
+    },
+    started() {
+      this.startedFlag = true;
+      setTimeout(this.startTime, 1000);
     },
     prev(val) {
       if (val != 0) {
@@ -121,7 +121,15 @@ export default {
       this.secondsLabel.innerHTML = this.pad(this.totalSeconds % 60);
       this.minutesLabel.innerHTML = this.pad(parseInt(this.totalSeconds / 60));
     },
-
+    startTime(){
+      //https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
+      this.minutesLabel = document.getElementById("minutes");
+      this.secondsLabel = document.getElementById("seconds");
+      setInterval(this.setTime, 1000);
+      setInterval(this.fatalShooting, 83220);
+      this.timerPopup = document.getElementById("TimerPopup");
+      this.fatalDiv = document.getElementById("FatalShootings")
+    },
     pad(val) {
       var valString = val + "";
       if (valString.length < 2) {
@@ -176,9 +184,10 @@ export default {
 }
 .header {
   display: flex;
-  widows: 100%;
+  width: 100%;
   justify-content: space-between;
   padding: 1em;
+  height: 20vh;
 }
 
 .timer-popup{
@@ -187,6 +196,15 @@ export default {
   left: 5em;
   background-color: yellow;
   padding: 1em;
+}
+
+.home {
+  display: flex;
+  padding: 4em;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  justify-content: space-around;
 }
 
 
@@ -198,5 +216,9 @@ export default {
   top: 6em;
   padding: 1em;
   background-color: grey;
+}
+
+.stat-img {
+  width: 55%;
 }
 </style>
