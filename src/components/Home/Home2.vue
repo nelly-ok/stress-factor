@@ -1,7 +1,7 @@
 <template>
   <div class="home-2">
-    <h6>This interactive documentary explores stress and race.</h6>
-    <h6>We'll explore how race and your social environment affects your health and mental wellbeing.</h6>
+    <h4>This interactive documentary explores stress and race.</h4>
+    <h4>We'll explore how race and your social environment affects your health and mental wellbeing.</h4>
     <NextButton @prev="prev" @next="next" />
   </div>
 </template>

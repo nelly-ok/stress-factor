@@ -13,6 +13,8 @@
     <div class="results">
       <button type="button" class="btn btn-success" @click="spin">Spin</button>
       <p>Result: {{result}}</p>
+      <p v-if="result">The median household income for Black Americans is $41,000</p>
+      <p>{{incomeComparison}}</p>
     </div>
   </div>
 </template>
@@ -30,13 +32,15 @@ export default {
   },
   data() {
     return {
-      result: ""
+      result: "",
+      incomeComparison: "",
+      interval: false
     }
   },
   methods: {
     spin() {
       var deg = 0;
-      const interval = setInterval(function () {
+      this.interval = setInterval(function () {
         deg +=20;
         var wheel = document.getElementById("FG");
         wheel.style.webkitTransform = "rotate(" + deg + "deg)";
@@ -46,12 +50,10 @@ export default {
         wheel.style.transform = "rotate(" + deg + "deg)";
       }, 100);
 
-
+      
 
       //Stop the functions after 1 minute.
-      setTimeout(function () {
-        clearInterval(interval);
-      }, 3000);
+      setTimeout(this.incomeRandom, 3000);
     },
     prev() {
       this.$emit("prev");
@@ -60,33 +62,51 @@ export default {
       this.$emit("next");
     },
     incomeRandom(){
+      clearInterval(this.interval);
+
+      //https://www.statista.com/statistics/203207/percentage-distribution-of-household-income-in-the-us-by-ethnic-group/
       let rand = Math.floor(Math.random() * 101)+1; //pick a random number between 1 and 100
       if (rand <= 17) {
-        console.log("Under 15,000")
+        this.result = "Under 15,000";
+        this.incomeComparison = "You are below the median";
+        console.log("stressing");
+        this.$emit("stress", 5);
       } 
       else if (rand > 17 && rand <= 29) {
-        console.log("15,000 to 24,999")
+        this.result = "15,000 to 24,999";
+        this.incomeComparison = "You are below the median";
+        console.log("stressing");
+        this.$emit("stress", 5);
       } 
       else if (rand > 29 && rand <= 40) {
-        console.log("25,000 to 34,999")
+        this.result = "25,000 to 34,999";
+        this.incomeComparison = "You are below the median";
+        console.log("stressing");
+        this.$emit("stress", 5);
       } 
       else if (rand > 40 && rand <= 54) {
-        console.log("35,000 to 49,999")
+        this.result = "35,000 to 49,999";
+        this.incomeComparison = "You are about median";
       } 
       else if (rand > 54 && rand <= 71) {
-        console.log("50,000 to 74,999")
+        this.result = "50,000 to 74,999";
+        this.incomeComparison = "You are above the median";
       } 
       else if (rand > 71 && rand <= 81) {
-        console.log("75,000 to 99,999")
+        this.result = "75,000 to 99,999";
+        this.incomeComparison = "You are above the median";
       } 
       else if (rand > 81 && rand <= 92) {
-        console.log("100,000 to 149,999")
+        this.result = "100,000 to 149,999";
+        this.incomeComparison = "You are above the median";
       } 
       else if (rand > 92 && rand <= 96) {
-        console.log("150,000 to 199,999")
+        this.result = "150,000 to 199,999";
+        this.incomeComparison = "You are above the median";
       } 
       else if (rand > 96 && rand <= 101) {
-        console.log("200,000 and over")
+        this.result = "200,000 and over";
+        this.incomeComparison = "You are above the median";
       }
     }
   },

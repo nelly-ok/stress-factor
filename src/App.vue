@@ -13,7 +13,7 @@
       <div class="gauge">
         <h6>Stress Level</h6>
         <img src="../src/assets/img/gauge.png" alt="" srcset="">
-        <h6>0</h6>
+        <h6>{{this.stressLevel}}</h6>
       </div>
     </div>
     <div class="fatal-shootings" id="FatalShootings">
@@ -33,7 +33,7 @@
     <Stat3 v-if="comp[3]" @prev="prev(3)" @next="next(3)" />
     <Stat4 v-if="comp[4]" @prev="prev(4)" @next="next(4)" />
     <Stat5 v-if="comp[5]" @prev="prev(5)" @next="next(5)" />
-    <IncomeWheel v-if="comp[6]" @prev="prev(6)" @next="next(6)" />
+    <IncomeWheel v-if="comp[6]" @prev="prev(6)" @next="next(6)" @stress="stress"/>
     <Video v-if="comp[7]" @prev="prev(7)" @next="next(7)" header="Depression, Anxiety and Money Problems" source="https://www.youtube.com/embed/hmAjftS73QA"/>
     <EducationWheel v-if="comp[8]" @prev="prev(8)" @next="next(8)" />
     <Video v-if="comp[9]" @prev="prev(9)" @next="next(9)" header="Coping with Stress" source="https://www.youtube.com/embed/rWzDq2318g8"/>
@@ -72,7 +72,6 @@ export default {
   data() {
     return {
       home: true,
-      stress: false,
       comp0: false,
       comp1: false,
       comp: { 0: false, 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false, 10: false },
@@ -82,7 +81,8 @@ export default {
       timerPopup: false,
       fatal: true,
       fatalDiv: false,
-      startedFlag: false
+      startedFlag: false,
+      stressLevel: 0
     };
   },
   mounted() {
@@ -158,6 +158,10 @@ export default {
           this.closeFatal();
         }, 15000)
       }
+    },
+    stress(value){
+      this.stressLevel += value;
+      console.log(this.stressLevel, value)
     }
   },
 };
@@ -165,12 +169,17 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-family: 'Odibee Sans', cursive;
+}
+
+body {
+  font-family: 'Odibee Sans', cursive !important;
 }
 
 .gauge {
