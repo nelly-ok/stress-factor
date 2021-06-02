@@ -2,7 +2,7 @@
   <section>
     <Home1 v-if="home[0]" @prev="prev(0)" @next="next(0)"/>
     <Home2 v-if="home[1]" @prev="prev(1)" @next="next(1)"/>
-    <Home3Start v-if="home[2]" @start="start()" />
+    <Home3Start v-if="home[2]" @start="start" />
 
   </section>
 </template>
@@ -30,8 +30,9 @@ export default {
     }
   },
   methods: {
-    start() {
-      this.$emit("start");
+    start(value) {
+      console.log(value);
+      this.$emit("start", value);
     },
     prev(val) {
       if (val != 0) {

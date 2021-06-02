@@ -4,14 +4,15 @@
     <div class="identity-select">
       <div class="select-third">
         <h6>Gender:</h6>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Female</option>
-          <option value="1">Male</option>
-          <option value="2">Trans</option>
-          <option value="3">Non-binary</option>
-          <option value="4">Queer/Non-conforming</option>
-          <option value="5">Prefer not to answer</option>
+        <select v-model="demo.gender" class="form-select" aria-label="Default select example">
+          <option value="woman" selected>Woman</option>
+          <option value="man">Man</option>
+          <option value="trans">Trans</option>
+          <option value="enby">Non-binary</option>
+          <option value="queer">Queer/Non-conforming</option>
+          <option value="no">Prefer not to answer</option>
         </select>
+        <p>gender is: {{ demo.gender }}</p>
       </div>
       <div class="select-third">
         <h6>Age:</h6>
@@ -48,9 +49,18 @@ export default {
   },
   methods: {
     start() {
-      this.$emit("start");
+      this.$emit("start", this.demo);
     },
   },
+  data() {
+    return {
+      demo: {
+        gender: null,
+        age: null,
+        sex: null,
+      }
+    }
+  }
 };
 </script>
 

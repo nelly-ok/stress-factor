@@ -1,22 +1,26 @@
 <template>
   <div class="home">
-    <h1></h1>
-    <img class="stat-img" src="../assets/img/Stat5.jpg" alt="" srcset="">
+    <h1>Education analysis</h1>
+    <img class="stat-img" src="img" alt="" srcset="">
     <NextButton  @prev="prev" @next="next"/>
   </div>
 </template>
+
+
 
 <script>
 
 import NextButton from './NextButton.vue';
 
 export default {
-  name: "Stat5",
+  name: "EducationAnalysis",
   components: {
     NextButton
   },
   props: {
     msg: String,
+    header: String,
+    img: String
   },
   methods: {
     start() {

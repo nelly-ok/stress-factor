@@ -27,15 +27,15 @@
         </button>
     </div>
     <Home v-if="home" @started="started" @start="start" msg="Welcome to Your Vue.js App" />
-    <Stress v-if="comp[0]" @prev="prev(0)" @next="next(0)" />
-    <Stat1 v-if="comp[1]" @prev="prev(1)" @next="next(1)" />
-    <Stat2 v-if="comp[2]" @prev="prev(2)" @next="next(2)" />
-    <Stat3 v-if="comp[3]" @prev="prev(3)" @next="next(3)" />
-    <Stat4 v-if="comp[4]" @prev="prev(4)" @next="next(4)" />
-    <Stat5 v-if="comp[5]" @prev="prev(5)" @next="next(5)" />
+    <Stress  v-if="comp[0]" @prev="prev(0)" @next="next(0)" />
+    <Stat :header="stats[0].header" :img="getImg(stats[0].img)" v-if="comp[1]" @prev="prev(1)" @next="next(1)" />
+    <Stat :header="stats[1].header" :img="getImg(stats[1].img)" v-if="comp[2]" @prev="prev(2)" @next="next(2)" />
+    <Stat :header="stats[2].header" :img="getImg(stats[2].img)" v-if="comp[3]" @prev="prev(3)" @next="next(3)" />
+    <Stat :header="stats[3].header" :img="getImg(stats[3].img)" v-if="comp[4]" @prev="prev(4)" @next="next(4)" />
+    <Stat :header="stats[4].header" :img="getImg(stats[4].img)" v-if="comp[5]" @prev="prev(5)" @next="next(5)" />
     <IncomeWheel v-if="comp[6]" @prev="prev(6)" @next="next(6)" @stress="stress"/>
     <Video v-if="comp[7]" @prev="prev(7)" @next="next(7)" header="Depression, Anxiety and Money Problems" source="https://www.youtube.com/embed/hmAjftS73QA"/>
-    <EducationWheel v-if="comp[8]" @prev="prev(8)" @next="next(8)" />
+    <EducationWheel :gender="gender" v-if="comp[8]" @prev="prev(8)" @next="next(8)" @stress="stress"/>
     <Video v-if="comp[9]" @prev="prev(9)" @next="next(9)" header="Coping with Stress" source="https://www.youtube.com/embed/rWzDq2318g8"/>
     <LifeWheel v-if="comp[10]" @prev="prev(10)" @next="next(10)" />
   </section>
@@ -44,11 +44,7 @@
 <script>
 import Home from "./components/Home/Home.vue";
 import Stress from "./components/Stress.vue";
-import Stat1 from "./components/Stat1.vue";
-import Stat2 from "./components/Stat2.vue";
-import Stat3 from "./components/Stat3.vue";
-import Stat4 from "./components/Stat4.vue";
-import Stat5 from "./components/Stat5.vue";
+import Stat from "./components/Stat.vue";
 import IncomeWheel from "./components/IncomeWheel.vue";
 import LifeWheel from "./components/LifeWheel.vue";
 import EducationWheel from "./components/EducationWheel.vue";
@@ -59,11 +55,7 @@ export default {
   components: {
     Home,
     Stress,
-    Stat1,
-    Stat2,
-    Stat3,
-    Stat4,
-    Stat5,
+    Stat,
     IncomeWheel,
     EducationWheel,
     Video,
@@ -71,6 +63,9 @@ export default {
   },
   data() {
     return {
+      gender: null,
+      age: null,
+      sex: null,
       home: true,
       comp0: false,
       comp1: false,
@@ -82,8 +77,24 @@ export default {
       fatal: true,
       fatalDiv: false,
       startedFlag: false,
-      stressLevel: 0
-    };
+      stressLevel: 0,
+      stats: [{
+        header: "Next lets explore race. America (like most other countriess) has a race problem. Don’t believe? I’ll let the numbers do the talking.",
+        img: "income"
+      }, {
+        header: "Now thats just income, money received on a regular basis. For wealth, the total value of assets, possesions, or money, the gap is even starker.",
+        img: "Stat2" 
+      }, {
+        header: "",
+        img: "Stat3"
+      }, {
+        header: "",
+        img: "Stat4"
+      }, {
+        header: "",
+        img: "Stat5"
+      }, ]
+      };
   },
   mounted() {
     //https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
@@ -91,10 +102,14 @@ export default {
 
   },
   methods: {
-    start() {
+    start(value) {
       console.log("start");
       this.home = false;
       this.comp[0] = true;
+      this.gender = value.gender;
+      this.age = value.age;
+      this.sex = value.sex;
+      console.log(value)
     },
     started() {
       this.startedFlag = true;
@@ -115,6 +130,10 @@ export default {
         this.comp[val] = false;
         this.comp[val + 1] = true;
       }
+    },
+    getImg(name){
+      var images = require.context('./assets/img/', false, /\.jpg$/)
+      return images('./' + name + ".jpg")
     },
     setTime() {
       ++this.totalSeconds;
