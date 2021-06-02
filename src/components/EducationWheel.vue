@@ -1,21 +1,22 @@
 <template>
   <div class="home">
     <h1>Spin the education wheel</h1>
-    <img class="wheel bg" src="../assets/img/wheel-bg.png" alt="" srcset="" />
-    <img
-      class="wheel fg"
-      id="FG"
-      src="../assets/img/wheel-fg.png"
-      alt=""
-      srcset=""
-    />
+    <div class="wheel-container">
+      <img class="wheel bg" src="../assets/img/wheel-bg.png" alt="" srcset="" />
+      <img
+        class="wheel fg"
+        id="FG"
+        src="../assets/img/wheel-fg.png"
+        alt=""
+        srcset=""
+      />
+    </div>
     <NextButton @prev="prev" @next="next" />
     <div class="results">
-      <p>gener worked: {{gender}}</p>
       <button type="button" class="btn btn-success" @click="spin">Spin</button>
       <p>Result: {{result}}</p>
       <p>{{educationComparison}}</p>
-      <button type="button" id="Right" class="btn btn-success" @click="next()">
+      <button type="button" id="Right" class="btn btn-success" >
         Click to see education by race and gender chart
       </button>
     </div>
@@ -147,6 +148,12 @@ export default {
   width: 300px;
   position: absolute;
   
+}
+
+.wheel-container {
+  position: relative;
+    top: -150px;
+    left: -150px;
 }
 .results {
   position: relative;

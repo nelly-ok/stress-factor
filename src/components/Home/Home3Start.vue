@@ -3,7 +3,7 @@
     <h1>Choose an Identity</h1>
     <div class="identity-select">
       <div class="select-third">
-        <h6>Gender:</h6>
+        <h4>Gender:</h4>
         <select v-model="demo.gender" class="form-select" aria-label="Default select example">
           <option value="woman" selected>Woman</option>
           <option value="man">Man</option>
@@ -12,10 +12,10 @@
           <option value="queer">Queer/Non-conforming</option>
           <option value="no">Prefer not to answer</option>
         </select>
-        <p>gender is: {{ demo.gender }}</p>
+        
       </div>
       <div class="select-third">
-        <h6>Age:</h6>
+        <h4>Age:</h4>
         <select class="form-select" aria-label="Default select example">
           <option selected>5-10</option>
           <option value="1">10-18</option>
@@ -25,7 +25,7 @@
         </select>
       </div>
       <div class="select-third">
-        <h6>Sexual Orientation:</h6>
+        <h4>Sexual Orientation:</h4>
         <select class="form-select" aria-label="Default select example">
           <option selected>Straight</option>
           <option value="1">Gay/Lesbian</option>
@@ -38,10 +38,14 @@
     <button type="button" class="btn btn-success" @click="start()">
       Start
     </button>
+    <NextButton :hideRight="true"  @prev="prev" @next="next" />
   </div>
 </template>
 
 <script>
+
+import NextButton from '../NextButton'
+
 export default {
   name: "Home3Start",
   props: {
@@ -51,11 +55,17 @@ export default {
     start() {
       this.$emit("start", this.demo);
     },
+    prev() {
+      this.$emit("prev");
+    },
+  },
+  components: {
+    NextButton
   },
   data() {
     return {
       demo: {
-        gender: null,
+        gender: "woman",
         age: null,
         sex: null,
       }
@@ -90,6 +100,6 @@ export default {
 }
 
 .stat-img {
-  width: 55%;
+  width: 65%;
 }
 </style>

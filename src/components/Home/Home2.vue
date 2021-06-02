@@ -1,7 +1,8 @@
 <template>
   <div class="home-2">
-    <h4>This interactive documentary explores stress and race.</h4>
-    <h4>We'll explore how race and your social environment affects your health and mental wellbeing.</h4>
+    <h3>This interactive documentary explores stress and race.</h3>
+    <h3>We'll explore how race and your social environment affects your health and mental wellbeing.</h3>
+    <h3>The focus of this thought experiment will be Black Americans. I understand that race/racism doesn't exist in a Black/White binary, I'll make references to other races wherever relevant. I'm a Black American so thats the area I'm most passionate about and chose to focus on. </h3>
     <NextButton @prev="prev" @next="next" />
   </div>
 </template>
@@ -42,8 +43,9 @@ export default {
   padding: 4em 9em;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
-  justify-content: unset !important;
+  text-align: center;
+  height: 100vh;
+  justify-content: center;
 }
 
 .select-third {
@@ -54,6 +56,6 @@ export default {
 }
 
 .stat-img {
-  width: 55%;
+  width: 65%;
 }
 </style>

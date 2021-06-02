@@ -10,9 +10,10 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     ></iframe>
-    <NextButton @prev="prev" @next="next" />
+    <NextButton :hideLeft="true" @prev="prev" @next="next" />
   </div>
 </template>
+
 
 <script>
 

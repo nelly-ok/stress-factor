@@ -2,7 +2,7 @@
   <section>
     <Home1 v-if="home[0]" @prev="prev(0)" @next="next(0)"/>
     <Home2 v-if="home[1]" @prev="prev(1)" @next="next(1)"/>
-    <Home3Start v-if="home[2]" @start="start" />
+    <Home3Start v-if="home[2]" @start="start" @prev="prev(2)"/>
 
   </section>
 </template>
@@ -39,6 +39,10 @@ export default {
         this.home[val] = false;
         this.home[val - 1] = true;
       }
+      if (val == 2){
+        this.$emit("unstarted");
+      }
+      
     },
     next(val) {
       if (val < 3){
@@ -67,7 +71,6 @@ export default {
   padding: 4em;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
   justify-content: space-around;
 }
 
@@ -79,6 +82,6 @@ export default {
 }
 
 .stat-img {
-  width: 55%;
+  width: 65%;
 }
 </style>

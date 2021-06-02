@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home-1">
     <h1>Welcome to Stress Factor</h1>
     <NextButton :hideLeft="true"  @prev="prev" @next="next" />
   </div>
@@ -36,12 +36,12 @@ export default {
   justify-content: space-between;
 }
 
-.home {
+.home-1 {
   display: flex;
       padding: 4em;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   justify-content: space-around;
 }
 
@@ -53,6 +53,6 @@ export default {
 }
 
 .stat-img {
-  width: 55%;
+  width: 65%;
 }
 </style>

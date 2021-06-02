@@ -14,12 +14,17 @@ export default {
   name: "Stat1",
   props: {
     msg: String,
-    hideLeft: Boolean
+    hideLeft: Boolean,
+    hideRight: Boolean
   },
   mounted() {
     if (this.hideLeft){
       document.getElementById('Left').style.visibility = "hidden";
     }
+    if (this.hideRight){
+      document.getElementById('Right').style.visibility = "hidden";
+    }
+    
   },
   methods: {
     start() {
