@@ -15,7 +15,7 @@
     <div class="results">
       <button type="button" class="btn btn-success" @click="spin">Spin</button>
       <p>Result: {{result}}</p>
-      <p v-if="result">The median household income for Black Americans is $41,000</p>
+      <p v-if="result && !child">The median household income for Black Americans is $41,000</p>
       <p>{{incomeComparison}}</p>
     </div>
   </div>
@@ -51,6 +51,7 @@ export default {
     else {
       this.header = "Spin the income wheel"
     }
+    console.log(this.child)
   },
   methods: {
     spin() {
@@ -69,6 +70,7 @@ export default {
 
       //Stop the functions after 1 minute.
       if (this.child){
+        console.log("child randomizer")
         setTimeout(this.singleRandom, 3000);
       }
       else {
