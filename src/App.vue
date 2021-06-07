@@ -43,6 +43,9 @@
     <EducationAnalysis :gender="gender" v-if="comp[9]" @prev="prev(9)" @next="next(9)" @stress="stress"/>
     <Video v-if="comp[10]" @prev="prev(10)" @next="next(10)" header="Coping with Stress" source="https://www.youtube.com/embed/rWzDq2318g8"/>
     <LifeWheel v-if="comp[11]" @prev="prev(11)" @next="next(11)" />
+
+    <Breakdown v-if="breakdown" @destress="loadDestressor" />
+    <Destressor v-if="destressor" />
   </section>
 </template>
 
@@ -55,6 +58,8 @@ import LifeWheel from "./components/LifeWheel.vue";
 import EducationWheel from "./components/EducationWheel.vue";
 import Video from "./components/Video"
 import EducationAnalysis from './components/EducationAnalysis'
+import Breakdown from './components/Breakdown.vue'
+import Destressor from './components/Destressor/Destressor.vue';
 
 export default {
   name: "App",
@@ -66,7 +71,9 @@ export default {
     EducationWheel,
     Video,
     LifeWheel,
-    EducationAnalysis
+    EducationAnalysis,
+    Breakdown,
+    Destressor
   },
   data() {
     return {
@@ -88,6 +95,8 @@ export default {
       stressLevel: 0,
       timeInt: false,
       fatInt: false,
+      breakdown: true,
+      destressor: false,
       stats: [{
         header: "Next lets explore race. America (like most other countriess) has a race problem. Don’t believe? I’ll let the numbers do the talking.",
         img: "income"
@@ -201,6 +210,10 @@ export default {
     stress(value){
       this.stressLevel += value;
       console.log(this.stressLevel, value)
+    },
+    loadDestressor() {
+      this.breakdown = false,
+      this.destressor = true
     }
   },
 };
