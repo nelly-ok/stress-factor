@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Spin the income wheel</h1>
+    <h1>{{header}}</h1>
     <div class="wheel-container">
       <img class="wheel bg" src="../assets/img/wheel-bg.png" alt="" srcset="" />
       <img
@@ -31,12 +31,25 @@ export default {
   },
   props: {
     msg: String,
+    age: String
   },
   data() {
     return {
       result: "",
       incomeComparison: "",
-      interval: false
+      interval: false,
+      header: "",
+      child: false,
+    }
+  },
+  mounted() {
+    console.log(this.age)
+    if (this.age == "5-10" || this.age == "10-18"){
+      this.header = "Spin the single parent wheel"
+      this.child = true
+    }
+    else {
+      this.header = "Spin the income wheel"
     }
   },
   methods: {
@@ -55,7 +68,12 @@ export default {
       
 
       //Stop the functions after 1 minute.
-      setTimeout(this.incomeRandom, 3000);
+      if (this.child){
+        setTimeout(this.singleRandom, 3000);
+      }
+      else {
+        setTimeout(this.incomeRandom, 3000);
+      }
     },
     prev() {
       this.$emit("prev");
@@ -109,6 +127,22 @@ export default {
       else if (rand > 96 && rand <= 101) {
         this.result = "200,000 and over";
         this.incomeComparison = "You are above the median";
+      }
+    },
+    singleRandom(){
+      clearInterval(this.interval);
+
+      //https://www.statista.com/statistics/203207/percentage-distribution-of-household-income-in-the-us-by-ethnic-group/
+      let rand = Math.floor(Math.random() * 101)+1; //pick a random number between 1 and 100
+      if (rand <= 64) {
+        this.result = "single parent";
+        this.incomeComparison = "64% of black children grow up in a single parent household";
+        console.log("stressing");
+        this.$emit("stress", 15);
+      } 
+      else {
+        this.result = "both parents";
+        this.incomeComparison = "64% of black children grow up in a single parent household. You were a bit lucky this time";
       }
     }
   },

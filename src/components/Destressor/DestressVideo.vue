@@ -10,19 +10,19 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     ></iframe>
-    <NextButton  @prev="prev" @next="next" />
+    <button type="button" id="Right" class="btn btn-success" style="margin-top: 0.75em" @click="back" >
+         Back &lt; &lt;
+      </button>
   </div>
 </template>
 
 <script>
 
-import NextButton from './NextButton'
 
 export default {
   
   name: "Video",
   components: {
-    NextButton
   },
   props: {
     source: String,
@@ -38,19 +38,22 @@ export default {
     next() {
       this.$emit("next");
     },
+    back(){
+      this.$emit("back");
+    },
   },
 };
 </script>
 ß
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.navigate {
+.home {
   width: 100%;
-  padding: 0 2em;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
+  height: 100%;
 }
 
-
+iframe {
+      width: 100%;
+    height: 100%;
+}
 </style>

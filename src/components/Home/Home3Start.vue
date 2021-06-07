@@ -16,7 +16,7 @@
       </div>
       <div class="select-third">
         <h4>Age:</h4>
-        <select class="form-select" aria-label="Default select example">
+        <select v-model="demo.age" class="form-select" aria-label="Default select example">
           <option selected>5-10</option>
           <option value="1">10-18</option>
           <option value="2">18-30</option>
@@ -26,7 +26,7 @@
       </div>
       <div class="select-third">
         <h4>Sexual Orientation:</h4>
-        <select class="form-select" aria-label="Default select example">
+        <select v-model="demo.sex" class="form-select" aria-label="Default select example">
           <option selected>Straight</option>
           <option value="1">Gay/Lesbian</option>
           <option value="2">Bi-sexual</option>
@@ -38,7 +38,7 @@
     <button type="button" class="btn btn-success" @click="start()">
       Start
     </button>
-    <NextButton :hideRight="true"  @prev="prev" @next="next" />
+    <NextButton :hideRight="true"  @prev="prev"  />
   </div>
 </template>
 
@@ -66,8 +66,8 @@ export default {
     return {
       demo: {
         gender: "woman",
-        age: null,
-        sex: null,
+        age: "5-10",
+        sex: "Straight",
       }
     }
   }
@@ -100,6 +100,6 @@ export default {
 }
 
 .stat-img {
-  width: 65%;
+  width: 50%;
 }
 </style>

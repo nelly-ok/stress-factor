@@ -16,9 +16,10 @@
       <button type="button" class="btn btn-success" @click="spin">Spin</button>
       <p>Result: {{result}}</p>
       <p>{{educationComparison}}</p>
+      <a href="hhttps://nces.ed.gov/programs/digest/d20/tables/dt20_104.20.asp">
       <button type="button" id="Right" class="btn btn-success" >
         Click to see education by race and gender chart
-      </button>
+      </button></a>
     </div>
   </div>
 </template>
