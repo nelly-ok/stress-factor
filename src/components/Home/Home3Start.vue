@@ -17,8 +17,8 @@
       <div class="select-third">
         <h4>Age:</h4>
         <select v-model="demo.age" class="form-select" aria-label="Default select example">
-          <option selected>5-10</option>
-          <option value="1">10-18</option>
+          <option value="5-10" selected>5-10</option>
+          <option value="10-18">10-18</option>
           <option value="2">18-30</option>
           <option value="3">30+</option>
           <option value="4">Prefer not to answer</option>
